@@ -1,0 +1,839 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Product Traceability System API",
+		"description": "Complete API collection for the Product Traceability System. Track products from supplier → inventory → production → transfer → sale with full backward and forward traceability.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Suppliers",
+			"item": [
+				{
+					"name": "List Suppliers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/suppliers?search=&is_active=1&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "suppliers"],
+							"query": [
+								{"key": "search", "value": "", "description": "Search by name or code"},
+								{"key": "is_active", "value": "1"},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Fresh Meat Suppliers Inc.\",\n  \"code\": \"SUP-001\",\n  \"contact_person\": \"John Smith\",\n  \"email\": \"john@freshmeat.com\",\n  \"phone\": \"+1-555-0101\",\n  \"address\": \"123 Farm Road, Texas, USA\",\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/suppliers",
+							"host": ["{{base_url}}"],
+							"path": ["api", "suppliers"]
+						}
+					}
+				},
+				{
+					"name": "Get Supplier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/suppliers/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "suppliers", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Supplier",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Supplier Name\",\n  \"code\": \"SUP-001\",\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/suppliers/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "suppliers", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/suppliers/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "suppliers", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "List Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products?search=&is_active=1&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products"],
+							"query": [
+								{"key": "search", "value": ""},
+								{"key": "is_active", "value": "1"},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Premium Beef Steak\",\n  \"sku\": \"PROD-001\",\n  \"description\": \"High quality beef steak from grass-fed cattle\",\n  \"unit\": \"kg\",\n  \"requires_batch_tracking\": true,\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products"]
+						}
+					}
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Product Name\",\n  \"sku\": \"PROD-001\",\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Locations",
+			"item": [
+				{
+					"name": "List Locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/locations?search=&type=warehouse&is_active=1&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "locations"],
+							"query": [
+								{"key": "search", "value": ""},
+								{"key": "type", "value": "warehouse", "description": "warehouse, shop, production, supplier, customer"},
+								{"key": "is_active", "value": "1"},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Location",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Main Warehouse\",\n  \"code\": \"WH-001\",\n  \"type\": \"warehouse\",\n  \"address\": \"100 Storage Avenue, Industrial District\",\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/locations",
+							"host": ["{{base_url}}"],
+							"path": ["api", "locations"]
+						}
+					}
+				},
+				{
+					"name": "Get Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/locations/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "locations", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Location",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Location Name\",\n  \"code\": \"WH-001\",\n  \"type\": \"warehouse\",\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/locations/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "locations", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Location",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/locations/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "locations", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Batches",
+			"item": [
+				{
+					"name": "List Batches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/batches?product_id=&supplier_id=&search=&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "batches"],
+							"query": [
+								{"key": "product_id", "value": ""},
+								{"key": "supplier_id", "value": ""},
+								{"key": "search", "value": ""},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Batch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"product_id\": 1,\n  \"batch_number\": \"BATCH-001-2024\",\n  \"lot_number\": \"LOT-2024-001\",\n  \"manufacturing_date\": \"2024-01-15\",\n  \"expiry_date\": \"2024-04-15\",\n  \"supplier_id\": 1,\n  \"notes\": \"Premium quality batch\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/batches",
+							"host": ["{{base_url}}"],
+							"path": ["api", "batches"]
+						}
+					}
+				},
+				{
+					"name": "Get Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/batches/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "batches", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Batch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"product_id\": 1,\n  \"batch_number\": \"BATCH-001-2024\",\n  \"notes\": \"Updated notes\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/batches/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "batches", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Batch",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/batches/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "batches", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Inventory Movements",
+			"item": [
+				{
+					"name": "List Inventory Movements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/inventory-movements?batch_id=&location_id=&type=in&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-movements"],
+							"query": [
+								{"key": "batch_id", "value": ""},
+								{"key": "location_id", "value": ""},
+								{"key": "type", "value": "in", "description": "in, out, adjustment"},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Inventory Movement (Stock In)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"batch_id\": 1,\n  \"location_id\": 1,\n  \"type\": \"in\",\n  \"reference_type\": \"supplier\",\n  \"reference_id\": 1,\n  \"quantity\": 100,\n  \"unit_cost\": 25.50,\n  \"movement_date\": \"2024-02-01\",\n  \"notes\": \"Stock received from supplier\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/inventory-movements",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-movements"]
+						}
+					}
+				},
+				{
+					"name": "Create Inventory Movement (Stock Out)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"batch_id\": 1,\n  \"location_id\": 1,\n  \"type\": \"out\",\n  \"reference_type\": \"sale\",\n  \"reference_id\": 1,\n  \"quantity\": 10,\n  \"movement_date\": \"2024-02-15\",\n  \"notes\": \"Stock sold\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/inventory-movements",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-movements"]
+						}
+					}
+				},
+				{
+					"name": "Get Inventory Movement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/inventory-movements/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-movements", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Productions",
+			"item": [
+				{
+					"name": "List Productions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/productions?product_id=&status=completed&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "productions"],
+							"query": [
+								{"key": "product_id", "value": ""},
+								{"key": "status", "value": "completed", "description": "pending, in_progress, completed, cancelled"},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Production",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"product_id\": 4,\n  \"output_batch_id\": 5,\n  \"location_id\": 3,\n  \"quantity\": 500,\n  \"status\": \"completed\",\n  \"production_date\": \"2024-02-05\",\n  \"notes\": \"Burger patties production\",\n  \"materials\": [\n    {\n      \"batch_id\": 1,\n      \"quantity\": 50\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/productions",
+							"host": ["{{base_url}}"],
+							"path": ["api", "productions"]
+						}
+					}
+				},
+				{
+					"name": "Get Production",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/productions/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "productions", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Production",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"completed\",\n  \"notes\": \"Production completed successfully\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/productions/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "productions", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Transfers",
+			"item": [
+				{
+					"name": "List Transfers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transfers?batch_id=&status=pending&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transfers"],
+							"query": [
+								{"key": "batch_id", "value": ""},
+								{"key": "status", "value": "pending", "description": "pending, in_transit, completed, cancelled"},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"batch_id\": 1,\n  \"from_location_id\": 1,\n  \"to_location_id\": 2,\n  \"quantity\": 50,\n  \"status\": \"pending\",\n  \"transfer_date\": \"2024-02-12\",\n  \"notes\": \"Transfer to shop\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transfers",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transfers"]
+						}
+					}
+				},
+				{
+					"name": "Get Transfer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transfers/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transfers", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Complete Transfer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transfers/:id/complete",
+							"host": ["{{base_url}}"],
+							"path": ["api", "transfers", ":id", "complete"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "List Sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/sales?batch_id=&location_id=&per_page=15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "sales"],
+							"query": [
+								{"key": "batch_id", "value": ""},
+								{"key": "location_id", "value": ""},
+								{"key": "per_page", "value": "15"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Sale",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"batch_id\": 1,\n  \"location_id\": 2,\n  \"customer_name\": \"John Customer\",\n  \"quantity\": 5,\n  \"unit_price\": 25.50,\n  \"total_amount\": 127.50,\n  \"sale_date\": \"2024-02-15\",\n  \"notes\": \"Customer purchase\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sales",
+							"host": ["{{base_url}}"],
+							"path": ["api", "sales"]
+						}
+					}
+				},
+				{
+					"name": "Get Sale",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/sales/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "sales", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Traceability",
+			"item": [
+				{
+					"name": "Trace Backward",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/trace/backward/:batchId",
+							"host": ["{{base_url}}"],
+							"path": ["api", "trace", "backward", ":batchId"],
+							"variable": [
+								{
+									"key": "batchId",
+									"value": "1",
+									"description": "Batch ID to trace backward from"
+								}
+							]
+						},
+						"description": "Trace backward from a batch to find all source materials and suppliers"
+					}
+				},
+				{
+					"name": "Trace Forward",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/trace/forward/:batchId",
+							"host": ["{{base_url}}"],
+							"path": ["api", "trace", "forward", ":batchId"],
+							"variable": [
+								{
+									"key": "batchId",
+									"value": "1",
+									"description": "Batch ID to trace forward from"
+								}
+							]
+						},
+						"description": "Trace forward from a batch to find all destinations (transfers, sales, production usage)"
+					}
+				},
+				{
+					"name": "Full Trace",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/trace/full/:batchId",
+							"host": ["{{base_url}}"],
+							"path": ["api", "trace", "full", ":batchId"],
+							"variable": [
+								{
+									"key": "batchId",
+									"value": "1",
+									"description": "Batch ID for full trace"
+								}
+							]
+						},
+						"description": "Get both backward and forward trace for a batch"
+					}
+				},
+				{
+					"name": "Trace From Sale",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/trace/sale/:saleId",
+							"host": ["{{base_url}}"],
+							"path": ["api", "trace", "sale", ":saleId"],
+							"variable": [
+								{
+									"key": "saleId",
+									"value": "1",
+									"description": "Sale ID to trace from"
+								}
+							]
+						},
+						"description": "Trace from a sale to find the batch and its complete history. Useful for customer complaints."
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
