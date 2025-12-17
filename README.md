@@ -305,7 +305,6 @@ See `TRACEABILITY_SYSTEM.md` for detailed schema documentation.
 ## 📝 Additional Documentation
 
 For detailed documentation, see:
-- `TRACEABILITY_SYSTEM.md` - Complete system documentation
 - `postman_collection.json` - Postman collection with all endpoints
 
 ## 🛠️ Development
